@@ -3,7 +3,7 @@
 
 A JavaScript Testing Framework
 
-[Jasmine](https://github.com/jasmine/jasmine) is a Behavior Driven Development testing framework for JavaScript. You can now use it within scriptr.
+[Jasmine](https://github.com/jasmine/jasmine) is a Behavior Driven Development testing framework for JavaScript. It can now be used with Scriptr.
 
 
 #How to create a jasmine test in Scriptr
@@ -16,8 +16,7 @@ Require the jasmine boot
 
 Write the test using [jasmine's syntax](https://jasmine.github.io/2.5/introduction) . Note that asynch and timeout features are not yet supported in scriptr. 
 
-`
-jasmine.describe("MyTest", function() {
+`jasmine.describe("MyTest", function() {
 
   jasmine.beforeAll(function(){
 
@@ -31,9 +30,8 @@ jasmine.describe("MyTest", function() {
     //assert on something
   });
  
-});
+});`
 
-`
  Finally you call 
 `jasmine.execute();`
 
