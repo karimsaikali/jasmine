@@ -11,35 +11,27 @@ function PubSubReporter(options) {
     
 
     this.jasmineStarted = function(options) {
-      
-        pubsub.publish(channel, this._wrap(options,"jasmineStarted"));
-      	console.log("JSON started " + JSON.stringify(options));
+        pubsub.publish(channel, this._wrap(options,"jasmineStarted"));    	
     };
-
-
+    
     this.suiteStarted = function(result) {
-        pubsub.publish(channel, this._wrap(result,"suiteStarted"));
-    	console.log("Suite started " +  JSON.stringify(result));
+        pubsub.publish(channel, this._wrap(result,"suiteStarted"));   
     };
 
     this.suiteDone = function(result) {
- 		pubsub.publish(channel, this._wrap(result,"suiteDone"));
-		console.log("Suite Done " +  JSON.stringify(result));
-
+ 	pubsub.publish(channel, this._wrap(result,"suiteDone"));
     };
 
     this.specStarted = function(result) {
-		pubsub.publish(channel, this._wrap(result,"specStarted"));
-      	console.log("Spec started " + JSON.stringify(result));
+	pubsub.publish(channel, this._wrap(result,"specStarted"));
     }; 
 
     this.specDone = function(result) {
-      pubsub.publish(channel, this._wrap(result,"specDone"));
-      console.log(JSON.stringify(result));
+     	pubsub.publish(channel, this._wrap(result,"specDone"));
     };
 
     this.jasmineDone = function(doneResult) {
- 	  pubsub.publish(channel, this._wrap(doneResult,"jasmineDone"));
+ 	pubsub.publish(channel, this._wrap(doneResult,"jasmineDone"));
     };
 	
     this._wrap = function(message,event){
