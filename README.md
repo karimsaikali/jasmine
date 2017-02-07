@@ -1,4 +1,4 @@
-# jasmine
+# Jasmine
 
 
 A JavaScript Testing Framework
