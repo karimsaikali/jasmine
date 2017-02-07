@@ -15,8 +15,8 @@ Require the jasmine boot
 `var jasmine = require("<path-to-jasmine-directory>/boot")`
 
 Write the test using [jasmine's syntax](https://jasmine.github.io/2.5/introduction) . Note that asynch and timeout features are not yet supported in scriptr. 
-
-`jasmine.describe("MyTest", function() {
+```javascript
+jasmine.describe("MyTest", function() {
 
   jasmine.beforeAll(function(){
 
@@ -30,11 +30,12 @@ Write the test using [jasmine's syntax](https://jasmine.github.io/2.5/introducti
     //assert on something
   });
  
-});`
-
- Finally you call 
-`jasmine.execute();`
-
+});
+```
+Finally you call 
+ ```javascript
+jasmine.execute();
+```
 
 Check the SampleTest under the test folder for a working example.
 
@@ -46,7 +47,7 @@ Due to the fantastic design by the Pivotal Lab Team and jasmine contributors, yo
 
 ### PubSubReporter 
 
-It pushes the test results to a channel "jasmine", you can subscribe a script to the channel to immediately do something based  on the results, the script could pick up the json message, and then create a ticket in zoho or JIRA or any other third party ticketing platform used by your team? or perhaps push a notification (a little drastic) to your phone ? Send an email ( as long as you don't spam yourself) ? 
+It pushes the test results to a channel "jasmine", you can subscribe a script to the channel to immediately do something based  on the results, the script could pick up the json message, and then create a ticket in zoho or JIRA or any other third party ticketing platform used by your team or perhaps push a notification (a little drastic) to your phone? Send an email? 
 
 Of course you need to save a channel in scriptr called "jasmine", or you could alternatively use a different channel by changing the value of channel in boot.
 
@@ -58,8 +59,7 @@ Nothing fancy there , It just prints the results in a human friendly format to y
 ### Write Your Own Reporter
 
  You can write your own reporter by creating a script with the following interface 
-
-`
+```javascript
 function SomeReporter() {
     
    this.jasmineStarted = function(options) {
@@ -88,8 +88,7 @@ function SomeReporter() {
    
    return this;
 }
-
-`
+```
 
 In the boot script, you require the reporter module and instantiate the reporter and you add it to the jasmine core.
 
