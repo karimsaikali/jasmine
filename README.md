@@ -6,7 +6,7 @@ A JavaScript Testing Framework
 [Jasmine](https://github.com/jasmine/jasmine) is a Behavior Driven Development testing framework for JavaScript. It can now be used with Scriptr.
 
 
-##How to create a jasmine test in Scriptr
+##Writing A Jasmine Test
 
 Start by creating a scriptr script.
 
