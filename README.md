@@ -41,15 +41,15 @@ Check the SampleTest under the test folder for a working example.
 
 ## Getting the Results
 
-Due to the fantastic design by the Pivotal Lab Team and jasmine contributors, you can simply write a reporter or use the scriptr reporters under the reporters folder that are enabled by default. 
+Due to the fantastic design of Jasmine, Every time a spec started or finished executing or a suite started or finished executing, the results are sent to a reporter interface within an object. The reporter can then deal with the object. You can simply write a reporter or use the default scriptr reporters under the reporters folder that are enabled by default. 
 
 ### Default Reporters
 
 #### PubSubReporter 
 
-It pushes the test results to a channel "jasmine", you can subscribe a script to the channel to immediately do something based  on the results, the script could pick up the json message, and then create a ticket in zoho or JIRA or any other third party ticketing platform used by your team or perhaps push a notification (a little drastic) to your phone? Send an email? 
+It pushes the test results to a channel "jasmine", you can subscribe a script to the channel to immediately do something based  on a spec or suite result, the script could pick up the json message, and then create a ticket in zoho or JIRA or any other third party ticketing platform used by your team or perhaps push a notification (a little drastic) to your phone? Send an email? 
 
-Of course you need to save a channel in scriptr called "jasmine", or you could alternatively use a different channel by changing the value of channel in boot.
+Of course you need to save a channel in scriptr called "jasmine", or you could alternatively use a different channel by changing the used channel in the reporter.
 
 #### Console Reporter 
 
