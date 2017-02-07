@@ -6,7 +6,7 @@ A JavaScript Testing Framework
 [Jasmine](https://github.com/jasmine/jasmine) is a Behavior Driven Development testing framework for JavaScript. It can now be used with Scriptr.
 
 
-#How to create a jasmine test in Scriptr
+##How to create a jasmine test in Scriptr
 
 Start by creating a scriptr script.
 
@@ -39,24 +39,24 @@ jasmine.execute();
 
 Check the SampleTest under the test folder for a working example.
 
-# Getting the Results
+## Getting the Results
 
 Due to the fantastic design by the Pivotal Lab Team and jasmine contributors, you can simply write a reporter or use the scriptr reporters under the reporters folder that are enabled by default. 
 
-## Default Reporters
+### Default Reporters
 
-### PubSubReporter 
+#### PubSubReporter 
 
 It pushes the test results to a channel "jasmine", you can subscribe a script to the channel to immediately do something based  on the results, the script could pick up the json message, and then create a ticket in zoho or JIRA or any other third party ticketing platform used by your team or perhaps push a notification (a little drastic) to your phone? Send an email? 
 
 Of course you need to save a channel in scriptr called "jasmine", or you could alternatively use a different channel by changing the value of channel in boot.
 
-### Console Reporter 
+#### Console Reporter 
 
 Nothing fancy there , It just prints the results in a human friendly format to your scriptr console / response script logs using console.log .
 
 
-### Write Your Own Reporter
+#### Write Your Own Reporter
 
  You can write your own reporter by creating a script with the following interface 
 ```javascript
@@ -93,7 +93,7 @@ function SomeReporter() {
 In the boot script, you require the reporter module and instantiate the reporter and you add it to the jasmine core.
 
 
-# Having nightly Builds 
+## Setting up nightly Builds 
 
  You can just cron the testing script you created, and you got nightly builds combined with the PubSubReporter and your script that creates tickets.
 
