@@ -14,7 +14,7 @@ Require the jasmine boot
 
 `var jasmine = require("<path-to-jasmine-directory>/boot")`
 
-Write the test using [jasmine's syntax](https://jasmine.github.io/2.5/introduction) . Note that asynch and timeout features are not yet supported in scriptr. 
+Write the test using [jasmine's syntax](https://jasmine.github.io/2.5/introduction) . Note that the spy, matchers, asynch and timeout features are not yet supported in scriptr. 
 ```javascript
 jasmine.describe("MyTest", function() {
 
@@ -39,9 +39,9 @@ jasmine.execute();
 
 Check the SampleTest under the test folder for a working example.
 
-## Getting the Results
+## Getting The Results
 
-Due to the fantastic design of Jasmine, Every time a spec started or finished executing or a suite started or finished executing, the results are sent to a reporter interface within an object. The reporter can then deal with the object. You can simply write a reporter or use the default scriptr reporters under the reporters folder that are enabled by default. 
+Due to the fantastic design of Jasmine, every time a spec started or finished executing or a suite started or finished executing, the results are sent to a reporter  following a predefined interface. The reporter can do something based on the event. You can simply write a reporter or use the default scriptr reporters under the reporters folder that are enabled by default. 
 
 ### Default Reporters
 
@@ -93,15 +93,16 @@ function SomeReporter() {
 In the boot script, you require the reporter module and instantiate the reporter and you add it to the jasmine core.
 
 
-## Setting up nightly Builds 
+## Setting Up Nightly Builds 
 
  You can just cron the testing script you created, and you got nightly builds combined with the PubSubReporter and your script that creates tickets.
 
 
 #TODO 
 * Configuration file for reporters / auto load reporters in configuration file ? 
-* A nice UI using some customizable template on top of a templating engine that listens to the jasmine channel to see the test results in real time. 
-* Use the same UI template to generate reports by nightly builds if necessary ? 
+* Add support for matchers, and create an easy way to build custom matchers within a project. Provide some common scriptr matchers such as checking a script's result.
+* A nice UI using some customizable template on top of a templating engine that listens to the jasmine channel and builds the test results in real time. 
+* Use the same UI template to generate reports into a file by nightly builds. 
 
 
 Happy Test Automation.
