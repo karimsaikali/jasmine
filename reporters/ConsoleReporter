@@ -34,21 +34,21 @@ function ConsoleReporter(options) {
     }; 
 
     this.specDone = function(message) {
-      	if(message.passed){
-        	logger.info("[" +name +  "] [Spec] [" + message.id +  "] " + message.fullName + " Done ");
+      	if(message.status != "failed"){
+        	logger.info("[" +name +  "] [Spec] [" + message.id +  "] [success] " + message.fullName + " Done ");
         }else{
-          logger.error("[" +name +  "] [Spec] [" + message.id +  "] " + message.fullName + " Done ");
+          logger.error("[" +name +  "] [Spec] [" + message.id +  "] [failure] " + message.fullName + " Done ");
         }
         for(var i=0;i< message.passedExpectations.length ;i++){
            var expectation = message.passedExpectations[i];
-         	var  log  = "[" + name + "] [" + message.id +  "] [" + (expectation.passed?"success":"failure") + "] " + expectation.matcherName;
+         	var  log  = "[" + name + "] [Spec] [" + message.id +  "] [" + (expectation.passed?"success":"failure") + "] " + expectation.matcherName;
            logger.info(log);
          }
         
          for(var i=0;i< message.failedExpectations.length ;i++){
            var expectation = message.failedExpectations[i];
         
-          var  log = "[" + name + "] [" + message.id +  "] [" + (expectation.passed?"success":"failure") + "] " + expectation.matcherName + " " + expectation.message;
+          var  log = "[" + name + "] [Spec] [" + message.id +  "] [" + (expectation.passed?"success":"failure") + "] " + expectation.matcherName + " " + expectation.message;
            if(message.stack != null && message.stack != ""){
              log += "\n" + message.stack ;
            }
