@@ -53,7 +53,7 @@ Of course you need to save a channel in scriptr called "jasmine", or you could a
 
 #### Console Reporter 
 
-Nothing fancy there , It just prints the results in a human friendly format to your scriptr console / response script logs using console.log .
+Nothing fancy there , It just prints the results in a human friendly format to your scriptr console / response script logs.
 
 
 #### Write Your Own Reporter
