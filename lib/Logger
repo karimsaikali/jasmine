@@ -40,7 +40,7 @@ function template(msg) {
         if(channel != null && channel.trim() != "")
         	messaging.publish(channel, template(msgTxt))
 
-        log.setLevel("DEBUG") //levels are ERROR | WARN | INFO | DEBUG | OFF
+        log.setLevel("INFO") //levels are ERROR | WARN | INFO | DEBUG | OFF
         log[logLevels[level]](logTxt);
       }
     })(i)
