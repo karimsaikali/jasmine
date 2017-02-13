@@ -1559,7 +1559,11 @@ getJasmineRequireObj().Expectation = function() {
       if (expected.length == 1) {
         expected = expected[0];
       }
-
+      
+	  if(this.isNot){
+        name = "Not " + name;
+      }
+      
       // TODO: how many of these params are needed?
       this.addExpectationResult(
         result.pass,
@@ -3029,12 +3033,13 @@ getJasmineRequireObj().matchersUtil = function(j$) {
   }
 };
 
-getJasmineRequireObj().toBe = function() {
+getJasmineRequireObj().toBe = function(j$) {
   function toBe() {
     return {
       compare: function(actual, expected) {
         return {
-          pass: actual === expected
+          pass: actual === expected,
+          message:" Expected " + j$.pp(actual) + " to be " + j$.pp(expected) + "."
         };
       }
     };
@@ -3043,7 +3048,7 @@ getJasmineRequireObj().toBe = function() {
   return toBe;
 };
 
-getJasmineRequireObj().toBeCloseTo = function() {
+getJasmineRequireObj().toBeCloseTo = function(j$) {
 
   function toBeCloseTo() {
     return {
@@ -3053,7 +3058,8 @@ getJasmineRequireObj().toBeCloseTo = function() {
         }
 
         return {
-          pass: Math.abs(expected - actual) < (Math.pow(10, -precision) / 2)
+          pass: Math.abs(expected - actual) < (Math.pow(10, -precision) / 2),
+          message:"Expected " + j$.pp(actual) + " to be close to " + j$.pp(expected)  + "."
         };
       }
     };
@@ -3090,13 +3096,15 @@ getJasmineRequireObj().toBeFalsy = function() {
   return toBeFalsy;
 };
 
-getJasmineRequireObj().toBeGreaterThan = function() {
+getJasmineRequireObj().toBeGreaterThan = function(j$) {
 
   function toBeGreaterThan() {
     return {
       compare: function(actual, expected) {
         return {
-          pass: actual > expected
+          pass: actual > expected,
+          message: "Expected " + j$.pp(expected) + " to be greater than " + j$.pp(actual) + " ."
+
         };
       }
     };
@@ -3106,13 +3114,15 @@ getJasmineRequireObj().toBeGreaterThan = function() {
 };
 
 
-getJasmineRequireObj().toBeGreaterThanOrEqual = function() {
+getJasmineRequireObj().toBeGreaterThanOrEqual = function(j$) {
 
   function toBeGreaterThanOrEqual() {
     return {
       compare: function(actual, expected) {
         return {
-          pass: actual >= expected
+          pass: actual >= expected, 
+          message: "Expected " + j$.pp(expected) + " to be greater than or equal to " + j$.pp(actual) + " ."
+
         };
       }
     };
@@ -3121,13 +3131,15 @@ getJasmineRequireObj().toBeGreaterThanOrEqual = function() {
   return toBeGreaterThanOrEqual;
 };
 
-getJasmineRequireObj().toBeLessThan = function() {
+getJasmineRequireObj().toBeLessThan = function(j$) {
   function toBeLessThan() {
     return {
 
       compare: function(actual, expected) {
         return {
-          pass: actual < expected
+          pass: actual < expected,
+          message: "Expected " + j$.pp(expected) + " to be less than or equal to " + j$.pp(actual) + " ."
+
         };
       }
     };
@@ -3135,13 +3147,14 @@ getJasmineRequireObj().toBeLessThan = function() {
 
   return toBeLessThan;
 };
-getJasmineRequireObj().toBeLessThanOrEqual = function() {
+getJasmineRequireObj().toBeLessThanOrEqual = function(j$) {
   function toBeLessThanOrEqual() {
     return {
 
       compare: function(actual, expected) {
         return {
-          pass: actual <= expected
+          pass: actual <= expected,
+          message: "Expected " + j$.pp(expected) + " to be less than or equal to " + j$.pp(actual) + " ."
         };
       }
     };
@@ -3218,7 +3231,7 @@ getJasmineRequireObj().toBeUndefined = function() {
   return toBeUndefined;
 };
 
-getJasmineRequireObj().toContain = function() {
+getJasmineRequireObj().toContain = function(j$) {
   function toContain(util, customEqualityTesters) {
     customEqualityTesters = customEqualityTesters || [];
 
@@ -3226,7 +3239,8 @@ getJasmineRequireObj().toContain = function() {
       compare: function(actual, expected) {
 
         return {
-          pass: util.contains(actual, expected, customEqualityTesters)
+          pass: util.contains(actual, expected, customEqualityTesters), 
+          message : "Expected " + j$.pp(actual)  + " to contain " + j$.pp(expected)  + "."
         };
       }
     };
@@ -3235,7 +3249,7 @@ getJasmineRequireObj().toContain = function() {
   return toContain;
 };
 
-getJasmineRequireObj().toEqual = function() {
+getJasmineRequireObj().toEqual = function(j$) {
 
   function toEqual(util, customEqualityTesters) {
     customEqualityTesters = customEqualityTesters || [];
@@ -3243,7 +3257,8 @@ getJasmineRequireObj().toEqual = function() {
     return {
       compare: function(actual, expected) {
         var result = {
-          pass: false
+          pass: false,
+          message: "Expected " + j$.pp(actual) + " to equal " + j$.pp(expected)  + "."
         };
 
         result.pass = util.equals(actual, expected, customEqualityTesters);

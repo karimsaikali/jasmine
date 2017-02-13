@@ -20,6 +20,11 @@ var pending = env.pending;
 var fail = env.fail;
 var spyOn =env.spyOn;
 
+var any = jasmineCore.any;
+var anything = jasmineCore.anything;
+var objectContaining = jasmineCore.objectContaining;
+var arrayContaining = jasmineCore.arrayContaining;
+var stringMatching = jasmineCore.stringMatching;
 var execute = env.execute;
 
 var name = request.parameters["testName"];
