@@ -1560,15 +1560,13 @@ getJasmineRequireObj().Expectation = function() {
         expected = expected[0];
       }
       
-	  if(this.isNot){
-        name = "Not " + name;
-      }
+	  
       
       // TODO: how many of these params are needed?
       this.addExpectationResult(
         result.pass,
         {
-          matcherName: name,
+          matcherName: (this.isNot? "Not ":"") + name,
           passed: result.pass,
           message: message,
           actual: this.actual,
