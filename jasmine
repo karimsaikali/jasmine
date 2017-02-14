@@ -523,8 +523,8 @@ getJasmineRequireObj().Env = function(j$) {
 
     var catchExceptions = true;
 
-    var realSetTimeout = j$.getGlobal().setTimeout;
-    var realClearTimeout = j$.getGlobal().clearTimeout;
+    var realSetTimeout = function(){};//TODO make this work in scriptr
+    var realClearTimeout = function(){};//TODO make this work in scriptr
     this.clock = new j$.Clock(global, function () { return new j$.DelayedFunctionScheduler(); }, new j$.MockDate(global));
 
     var runnableResources = {};
