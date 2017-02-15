@@ -29,14 +29,13 @@ var name = request.parameters["testName"];
 if(name == null){
   name = "Test-" + Date.now();
 }
-console.log(JSON.stringify(config.reporters));
 
 
 for(var i =0;i < config.reporters.length;i++){
   
   var module = require(config.reporters[i]);
   var reporter = new module.Reporter({"name" :name});
-  console.log("Using reporter " + JSON.stringify(reporter) + " : " + config.reporters[i]);
+  console.log("Using reporter " + config.reporters[i]);
   env.addReporter(reporter);
 }
 
