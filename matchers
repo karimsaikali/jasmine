@@ -18,6 +18,39 @@ var matchers =  {
         return result;
       }
     }
+  },
+  "hasErrorCode":function(util, customEqualityTesters) {
+  
+  	return {
+    
+     compare: function(actual, expected) {
+        if (expected === undefined) {
+          expected = '';
+        }
+        var result = {}; 
+        
+        result.pass = (actual.metadata.errorCode == expected) ;
+        result.message = "Expected Error code  " + expected + " but received " + actual.metadata.errorCode +  ".";
+        return result;
+      }
+    }
+  },
+
+  "hasErrorDetail":function(util, customEqualityTesters) {
+  
+  	return {
+    
+     compare: function(actual, expected) {
+        if (expected === undefined) {
+          expected = '';
+        }
+        var result = {}; 
+        
+        result.pass = (actual.metadata.errorDetail == expected) ;
+        result.message = "Expected Error Detail  " + expected + " but received " + actual.metadata.errorDetail +  ".";
+        return result;
+      }
+    }
   }
 }
 ;   
