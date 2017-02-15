@@ -5,7 +5,7 @@ var logger =new loggerMod.Logger();
 /**
    Prints jasmine events into the console in a human friendly way.
 **/
-function ConsoleReporter(options) {
+function Reporter(options) {
   var name = options.name;
   this.jasmineStarted = function(options) {
     var log = "Jasmine started [ " + name + " ] Total Specs " + options.totalSpecsDefined;

@@ -8,7 +8,7 @@ A reporter that prints jasmine event using publish/subscribe in the terminal in 
 not very practical to check results ,because there's no guarantee that the published messages will be sent to the terminal in the order they were sent.
 **/
 
-function TerminalReporter(options) {
+function Reporter(options) {
     var name = options.name;
     this.jasmineStarted = function(options) {
       var log = "Jasmine started [ " + name + " ] Total Specs " + options.totalSpecsDefined;
