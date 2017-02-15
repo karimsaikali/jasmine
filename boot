@@ -1,7 +1,5 @@
 var jasmine = require("./jasmine");
-var reporterModule = require("./reporters/PubSubReporter");
-var consoleReporterModule = require("./reporters/ConsoleReporter");
-var terminalReporterModule = require("./reporters/TerminalReporter");
+var config = require("./config");
 
 var jasmineCore = jasmine.jasmineRequire.core(jasmine.jasmineRequire);
 var env = jasmineCore.getEnv();
@@ -31,11 +29,20 @@ var name = request.parameters["testName"];
 if(name == null){
   name = "Test-" + Date.now();
 }
+console.log(JSON.stringify(config.reporters));
 
-var pubSubReporter = new reporterModule.PubSubReporter({"name": name});
-var reporter = new consoleReporterModule.ConsoleReporter({"name": name});
 
-env.addReporter(pubSubReporter);
-env.addReporter(reporter);
+for(var i =0;i < config.reporters.length;i++){
+  
+  var module = require(config.reporters[i]);
+  var reporter = new module.Reporter({"name" :name});
+  console.log("Using reporter " + JSON.stringify(reporter) + " : " + config.reporters[i]);
+  env.addReporter(reporter);
+}
 
+for(var i=0; i < config.matchers.length;i++){
+  var matcher = config.matchers[i];
+  var module = require(matcher);
+  jasmineCore.Expectation.addCoreMatchers(module.matchers);
+}
 

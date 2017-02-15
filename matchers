@@ -1,0 +1,24 @@
+ 
+
+var matchers =  {
+  
+  
+  "isSuccessful": function(util, customEqualityTesters) {
+  
+  	return {
+    
+     compare: function(actual, expected) {
+        if (expected === undefined) {
+          expected = '';
+        }
+        var result = {}; 
+        
+        result.pass = (actual.metadata.status == "success") ;
+        result.message = "Expected script to have executed successfully ";
+        return result;
+      }
+    }
+  }
+}
+;   
+   
