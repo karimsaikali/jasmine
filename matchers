@@ -19,6 +19,7 @@ var matchers =  {
       }
     }
   },
+  
   "hasErrorCode":function(util, customEqualityTesters) {
   
   	return {
@@ -38,7 +39,7 @@ var matchers =  {
 
   "hasErrorDetail":function(util, customEqualityTesters) {
   
-  	return {
+  	 return {
     
      compare: function(actual, expected) {
         if (expected === undefined) {
@@ -51,7 +52,24 @@ var matchers =  {
         return result;
       }
     }
-  }
-}
-;   
+  },
+  
+  "hasStatusCode":function(util, customEqualityTesters) {
+
+    return {
+   
+         compare: function(actual, expected) {
+            if (expected === undefined) {
+              expected = '';
+            }
+            var result = {};
+
+            result.pass = (actual.metadata.statusCode == expected) ;
+            result.message = "Expected Status code  " + expected + " but received " + actual.metadata.statusCode +  ".";
+            return result;
+          }
+     }
+ }
+  
+};   
    
